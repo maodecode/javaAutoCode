@@ -1,0 +1,53 @@
+package com.haier.openplatform.alm.project.dao;
+
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
+import com.haier.openplatform.alm.project.domain.ProjectYusuan;
+import com.haier.openplatform.alm.project.model.ProjectYusuanSearchModel;
+import com.haier.openplatform.dao.CommonDAO;
+
+/**
+ * 对ProjectYusuan实体进行CRUD操作
+ */
+public interface ProjectYusuanDAO extends CommonDAO{	
+
+	/**
+	 * @param projectYusuan
+	 * 添加
+	 */
+	public void saveProjectYusuan(@Param("model") ProjectYusuan projectYusuan);	
+	/**
+	 * @param projectYusuan
+	 * 删除
+	 */
+	public void delProjectYusuan(@Param("model") ProjectYusuan projectYusuan);
+	/**
+	 * @param projectYusuan
+	 * 修改
+	 */
+	public void updateProjectYusuan(@Param("model") ProjectYusuan projectYusuan);
+	
+	/**
+	 * @param 
+	 * @return 查找
+	 */
+	public ProjectYusuan getProjectYusuanById(@Param("id") Long id);
+	/**
+	 * @param 
+	 * @return 查找
+	 */
+	public ProjectYusuan getProjectYusuanByProjectYusuan(@Param("model") ProjectYusuan projectYusuan);
+	
+	/**
+	 * @param model
+	 */
+	public List<ProjectYusuan> searchProjectYusuanPagerList(@Param("model") ProjectYusuan projectYusuan);
+	/**
+	 * @param model
+	 * @return
+	 */
+	public long getProjectYusuansPagerCount(@Param("model") ProjectYusuan projectYusuan);
+	
+}

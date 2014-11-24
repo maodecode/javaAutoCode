@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.haier.openplatform.alm.project.dao.ProjectYusuanDAO">
+	<!-- oracle 分页头 -->
+	<sql id="pagination_Head">
+		<![CDATA[select * from ( select row_.*, rownum rownum_ from ( ]]>
+	</sql>
+	<!-- oracle 分页尾 -->
+	<sql id="pagination_Tail">
+	  <![CDATA[) row_ where rownum <= #{model.pager.pageSize} * #{model.pager.currentPage} ) where rownum_ >= #{model.pager.firstResult} + 1]]>
+	</sql>
+	<!-- count * from -->
+	<sql id="count_Start_Head">
+		<![CDATA[select count(*) from ( ]]>
+	</sql>
+	<sql id="count_Start_Tail">
+		<![CDATA[)]]>
+	</sql>
+
+	<resultMap id="projectYusuanMap" type="com.haier.openplatform.alm.project.domain.ProjectYusuan">
+		<result property="id" column="id" /><!-- 主键 -->
+		<result property="year" column="year" /><!-- 预算年 -->
+		<result property="chjzlcode" column="chjzlcode" /><!-- 承接战略 -->
+		<result property="chjzl" column="chjzl" /><!--  -->
+		<result property="gjrwcode" column="gjrwcode" /><!-- 关键任务 -->
+		<result property="gjrw" column="gjrw" /><!--  -->
+		<result property="ysxzhflcode" column="ysxzhflcode" /><!-- 预算性质分类 -->
+		<result property="ysxzhfl" column="ysxzhfl" /><!--  -->
+		<result property="ysname" column="ysname" /><!-- 预算名称 -->
+		<result property="ysmb" column="ysmb" /><!-- 预算目标 -->
+		<result property="ysjj" column="ysjj" /><!-- 预算简介 -->
+		<result property="yjkshrq" column="yjkshrq" /><!-- 预算开始日期 -->
+		<result property="ykjshrq" column="ykjshrq" /><!-- 预算结束日期 -->
+		<result property="bu" column="bu" /><!-- bu -->
+		<result property="pl" column="pl" /><!-- pl -->
+		<result property="xmbshcode" column="xmbshcode" /><!-- 项目标示 -->
+		<result property="xmbsh" column="xmbsh" /><!--  -->
+		<result property="psijkrcode" column="psijkrcode" /><!-- psi接口人 -->
+		<result property="psijkr" column="psijkr" /><!--  -->
+		<result property="chjjytcode" column="chjjytcode" /><!-- 承接经营体 -->
+		<result property="chjjyt" column="chjjyt" /><!--  -->
+		<result property="chjtdcode" column="chjtdcode" /><!-- 承接团队 -->
+		<result property="chjtd" column="chjtd" /><!--  -->
+		<result property="ysfy" column="ysfy" /><!-- 预算费用 -->
+		<result property="cdate" column="cdate" /><!-- 创建时间 -->
+		<result property="cusercode" column="cusercode" /><!-- 创建人 -->
+		<result property="cusername" column="cusername" /><!--  -->
+		<result property="proiid" column="proiid" /><!-- 流程实例id -->
+		<result property="prostatus" column="prostatus" /><!--  -->
+		<result property="prostartusercode" column="prostartusercode" /><!--  -->
+		<result property="prostartusername" column="prostartusername" /><!--  -->
+		<result property="protaskcomments" column="protaskcomments" /><!--  -->
+		<result property="yslx" column="yslx" /><!-- 预算类型 -->
+		<result property="ywfyfl" column="ywfyfl" /><!-- 运维费用分类 -->
+		<result property="tqfyje" column="tqfyje" /><!-- 同期费用 -->
+		<result property="fielda" column="fielda" /><!-- 预算状态文字显示 -->
+		<result property="fieldb" column="fieldb" /><!-- 预算类型（开发预算，运维预算，基础资源保障预算） -->
+		<result property="fieldc" column="fieldc" /><!-- 预算编码(IT-W-23012002) -->
+		<result property="fielde" column="fielde" /><!-- 预算占用标识 -->
+		<result property="fieldf" column="fieldf" /><!--  -->
+	</resultMap>
+
+	<!-- 保存信息 -->
+	<insert id="saveProjectYusuan">
+		<selectKey keyProperty="model.id" order="BEFORE" resultType="long">
+			SELECT XXXX.NEXTVAL FROM DUAL
+		</selectKey>
+		<![CDATA[
+		insert into project_yusuan (
+			id,year,chjzlcode,chjzl,gjrwcode,gjrw,ysxzhflcode,ysxzhfl,ysname,ysmb,ysjj,yjkshrq,ykjshrq,bu,pl,xmbshcode,xmbsh,psijkrcode,psijkr,chjjytcode,chjjyt,chjtdcode,chjtd,ysfy,cdate,cusercode,cusername,proiid,prostatus,prostartusercode,prostartusername,protaskcomments,yslx,ywfyfl,tqfyje,fielda,fieldb,fieldc,fielde,fieldf)
+		values (
+			#{model.id},#{model.year},#{model.chjzlcode},#{model.chjzl},#{model.gjrwcode},#{model.gjrw},#{model.ysxzhflcode},#{model.ysxzhfl},#{model.ysname},#{model.ysmb},#{model.ysjj},#{model.yjkshrq},#{model.ykjshrq},#{model.bu},#{model.pl},#{model.xmbshcode},#{model.xmbsh},#{model.psijkrcode},#{model.psijkr},#{model.chjjytcode},#{model.chjjyt},#{model.chjtdcode},#{model.chjtd},#{model.ysfy},#{model.cdate},#{model.cusercode},#{model.cusername},#{model.proiid},#{model.prostatus},#{model.prostartusercode},#{model.prostartusername},#{model.protaskcomments},#{model.yslx},#{model.ywfyfl},#{model.tqfyje},#{model.fielda},#{model.fieldb},#{model.fieldc},#{model.fielde},#{model.fieldf}			
+		   )
+		]]>
+	</insert>
+	<!-- 根据xxx删除 -->
+	<delete id="delProjectYusuan">
+		<![CDATA[
+		delete from project_yusuan where id = #{model.id}
+		]]>
+	</delete>
+	
+	<!-- 保存信息 -->
+	<update id="updateProjectYusuan" >
+		<![CDATA[
+		update project_yusuan
+			set id = #{model.id},year = #{model.year},chjzlcode = #{model.chjzlcode},chjzl = #{model.chjzl},gjrwcode = #{model.gjrwcode},gjrw = #{model.gjrw},ysxzhflcode = #{model.ysxzhflcode},ysxzhfl = #{model.ysxzhfl},ysname = #{model.ysname},ysmb = #{model.ysmb},ysjj = #{model.ysjj},yjkshrq = #{model.yjkshrq},ykjshrq = #{model.ykjshrq},bu = #{model.bu},pl = #{model.pl},xmbshcode = #{model.xmbshcode},xmbsh = #{model.xmbsh},psijkrcode = #{model.psijkrcode},psijkr = #{model.psijkr},chjjytcode = #{model.chjjytcode},chjjyt = #{model.chjjyt},chjtdcode = #{model.chjtdcode},chjtd = #{model.chjtd},ysfy = #{model.ysfy},cdate = #{model.cdate},cusercode = #{model.cusercode},cusername = #{model.cusername},proiid = #{model.proiid},prostatus = #{model.prostatus},prostartusercode = #{model.prostartusercode},prostartusername = #{model.prostartusername},protaskcomments = #{model.protaskcomments},yslx = #{model.yslx},ywfyfl = #{model.ywfyfl},tqfyje = #{model.tqfyje},fielda = #{model.fielda},fieldb = #{model.fieldb},fieldc = #{model.fieldc},fielde = #{model.fielde},fieldf = #{model.fieldf}  
+		where id = #{model.id}
+		]]>
+	</update>
+	
+	<!-- 根据ID查询-->
+	<select id="getProjectYusuanById" parameterType="Long" resultMap="projectYusuanMap">
+		<include refid="searchAll_sql" />
+		<![CDATA[
+		where t.id = #{id}
+		]]>
+	</select>
+	<!-- 根据其他条件查询-->
+	<select id="getProjectYusuanByProjectYusuan" resultMap="projectYusuanMap">
+		<include refid="searchAll_sql" />
+		<![CDATA[
+		where t.id = #{id}
+		]]>
+	</select>
+	
+	
+	
+	<!-- 查询所有字段 -->
+	<sql id="searchAll_sql">
+		<![CDATA[
+	    select id,year,chjzlcode,chjzl,gjrwcode,gjrw,ysxzhflcode,ysxzhfl,ysname,ysmb,ysjj,yjkshrq,ykjshrq,bu,pl,xmbshcode,xmbsh,psijkrcode,psijkr,chjjytcode,chjjyt,chjtdcode,chjtd,ysfy,cdate,cusercode,cusername,proiid,prostatus,prostartusercode,prostartusername,protaskcomments,yslx,ywfyfl,tqfyje,fielda,fieldb,fieldc,fielde,fieldf
+	      from project_yusuan t
+		  ]]>
+	</sql>
+	<!-- 根据条件查询 -->
+	<sql id="searchWhere_sql">
+		<include refid="searchAll_sql" />
+		where id = #{model.id}
+	</sql>
+	
+	<!-- 带条件的分页查询 -->
+	<select id="searchProjectYusuanPagerList"
+		resultMap="projectYusuanMap">
+		<include refid="pagination_Head" />
+		<include refid="searchWhere_sql" />
+		<include refid="pagination_Tail" />
+	</select>
+	<!-- 带条件的分页查询合计 -->
+	<select id="getProjectYusuansPagerCount"
+		resultType="long">
+		<include refid="count_Start_Head" />
+		<include refid="searchWhere_sql" />
+		<include refid="count_Start_Tail" />
+	</select>
+	
+</mapper>

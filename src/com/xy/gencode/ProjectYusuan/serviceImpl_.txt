@@ -1,0 +1,56 @@
+@Transactional(readOnly=false)
+public class ProjectYusuanServiceImpl extends BaseActivitiService implements ProjectYusuanService {
+	private ProjectYusuanDAO projectYusuanDao;
+
+	/*
+	 * 保存projectYusuan
+	 */
+	@Override
+	public void saveProjectYusuan(ProjectYusuan model) {
+		projectYusuanDao.saveProjectYusuan(model);
+	}
+	/*
+	 * 根据id删除 projectYusuan
+	 */
+	@Override
+	public void deleteProjectYusuanByid(ProjectYusuan model) {
+		projectYusuanDao.delProjectYusuan(model);
+	}
+
+	/**
+	 * 根据id得到projectYusuan
+	 */
+	@Override
+	@Transactional(readOnly=true)
+	public ProjectYusuan getProjectYusuanById(ProjectYusuan model) {
+		return projectYusuanDao.getProjectYusuanById(model.getId());
+	}
+	/*
+	 * 更新 projectYusuan
+	 */
+	@Override
+	public void updateProjectYusuan(ProjectYusuan model) {
+		projectYusuanDao.updateProjectYusuan(model);
+	}
+	@Override
+	@Transactional(readOnly=true)
+	public Pager<ProjectYusuan> searchProjectYusuanPager(ProjectYusuan model) {
+		List<ProjectYusuan> yslist = projectYusuanDao.searchProjectYusuanPagerList(model);
+		Long count = projectYusuanDao.getProjectYusuansPagerCount(model);
+		return Pager.cloneFromPager(model.getPager(), count,yslist);
+	}
+
+/**
+	 * @return the projectYusuanDao
+	 */
+	public ProjectYusuanDAO getProjectYusuanDao() {
+		return projectYusuanDao;
+	}
+	/**
+	 * @param projectYusuanDao the projectYusuanDao to set
+	 */
+	public void setProjectYusuanDao(ProjectYusuanDAO projectYusuanDao) {
+		this.projectYusuanDao = projectYusuanDao;
+	}
+	
+}

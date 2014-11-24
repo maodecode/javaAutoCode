@@ -1,0 +1,81 @@
+
+/**
+ * @author Administrator
+ *	ProjectYusuan维护action
+ */
+public class ProjectYusuanAction extends BaseProjectAction{
+	private ProjectYusuanService projectYusuanService;
+	private ProjectYusuan model = new ProjectYusuan();
+	private Pager pager = new Pager();
+	/**
+	* 分页查询
+	* ProjectYusuan
+	*/
+	@Override
+	public String execute() throws Exception {
+		model.setPager(pager);
+		this.pager = projectYusuanService.searchProjectYusuanPager(model);
+		return SUCCESS;
+	}
+	/**
+	* 保存实体
+	* ProjectYusuan
+	*/
+	public String saveProjectYusuan(){
+		projectYusuanService.saveProjectYusuan(model);
+		return SUCCESS;
+	}
+	/**
+	* 根据id删除实体
+	* ProjectYusuan
+	*/
+	public String delProjectYusuanByidNosec(){
+		try{
+			projectYusuanService.deleteProjectYusuanByid(model);
+		}catch(Exception e){
+			this.getJsonResult().setFlag(false);
+			this.getJsonResult().setMsg(e.getMessage());
+		}
+		return SUCCESS;
+	}
+	
+	/**
+	*修改实体
+	* ProjectYusuan
+	*/
+	public String toUpdateProjectYusuanNosec(){
+		model = projectYusuanService.getProjectYusuanById(model);
+		return SUCCESS;
+	}
+	public String updateProjectYusuanNosec(){
+		try{
+			projectYusuanService.updateProjectYusuan(model);
+		}catch(Exception e){
+			this.getJsonResult().setFlag(false);
+			this.getJsonResult().setMsg(e.getMessage());
+		}
+		return SUCCESS;
+	}
+	/**
+	* 根据id得到实体
+	* ProjectYusuan
+	*/
+	public String getProjectYusuan(){
+		model = projectYusuanService.getProjectYusuanById(model);
+		return SUCCESS;
+	}
+	
+	
+	public Pager getPager() {
+		return pager;
+	}
+	public void setPager(Pager pager) {
+		this.pager = pager;
+	}
+	public ProjectYusuan getModel() {
+		return model;
+	}
+	public void setModel(ProjectYusuan model) {
+		this.model = model;
+	}
+}

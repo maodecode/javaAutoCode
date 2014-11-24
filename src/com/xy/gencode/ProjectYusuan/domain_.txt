@@ -1,0 +1,85 @@
+package com.haier.openplatform.alm.project.domain;
+import com.haier.openplatform.domain.BaseDomain;
+
+public class ProjectYusuan extends SearchModel{
+  	//主键
+	private Long id;
+  	//预算年
+	private Long year;
+  	//承接战略
+	private String chjzlcode;
+  	//
+	private String chjzl;
+  	//关键任务
+	private String gjrwcode;
+  	//
+	private String gjrw;
+  	//预算性质分类
+	private String ysxzhflcode;
+  	//
+	private String ysxzhfl;
+  	//预算名称
+	private String ysname;
+  	//预算目标
+	private String ysmb;
+  	//预算简介
+	private String ysjj;
+  	//预算开始日期
+	private java.util.Date yjkshrq;
+  	//预算结束日期
+	private java.util.Date ykjshrq;
+  	//bu
+	private String bu;
+  	//pl
+	private String pl;
+  	//项目标示
+	private String xmbshcode;
+  	//
+	private String xmbsh;
+  	//psi接口人
+	private String psijkrcode;
+  	//
+	private String psijkr;
+  	//承接经营体
+	private String chjjytcode;
+  	//
+	private String chjjyt;
+  	//承接团队
+	private String chjtdcode;
+  	//
+	private String chjtd;
+  	//预算费用
+	private Double ysfy;
+  	//创建时间
+	private java.util.Date cdate;
+  	//创建人
+	private String cusercode;
+  	//
+	private String cusername;
+  	//流程实例id
+	private String proiid;
+  	//
+	private Long prostatus;
+  	//
+	private String prostartusercode;
+  	//
+	private String prostartusername;
+  	//
+	private String protaskcomments;
+  	//预算类型
+	private String yslx;
+  	//运维费用分类
+	private String ywfyfl;
+  	//同期费用
+	private Double tqfyje;
+  	//预算状态文字显示
+	private String fielda;
+  	//预算类型（开发预算，运维预算，基础资源保障预算）
+	private String fieldb;
+  	//预算编码(IT-W-23012002)
+	private String fieldc;
+  	//预算占用标识
+	private String fielde;
+  	//
+	private String fieldf;
+}

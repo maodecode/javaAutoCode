@@ -1,0 +1,13 @@
+
+public interface ProjectYusuanService {
+
+	void saveProjectYusuan(ProjectYusuan model);
+
+	void deleteProjectYusuanByid(ProjectYusuan model);
+
+	ProjectYusuan getProjectYusuanById(ProjectYusuan model);
+
+	void updateProjectYusuan(ProjectYusuan model);
+
+	Pager searchProjectYusuanPager(ProjectYusuan model);
+}

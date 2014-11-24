@@ -1,0 +1,1 @@
+要把这个config目录设置为sourceFolder

@@ -1,0 +1,9 @@
+
+
+
+<bean id="projectYusuanDao" class="org.mybatis.spring.mapper.MapperFactoryBean" parent="baseDAO">
+	<property name="mapperInterface" value="com.haier.openplatform.alm.project.dao.ProjectYusuanDAO" />
+</bean>
+<bean id="projectYusuanService" class="com.haier.openplatform.alm.project.service.impl.ProjectYusuanServiceImpl" parent="activitiBaseService">
+	<property name="projectYusuanDao" ref="projectYusuanDao"></property>
+</bean>	
