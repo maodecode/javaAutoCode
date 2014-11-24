@@ -1,1 +1,1 @@
-要把这个config目录设置为sourceFolder
+瑕佹妸杩欎釜config鐩綍璁剧疆涓簊ourceFolder
