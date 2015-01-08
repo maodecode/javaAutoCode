@@ -21,7 +21,7 @@ public class MainTest {
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
-		
+		System.out.println("main方法开始。。。。。。");
 		//BeanService bs =  (BeanService) SpringContextUtil.getInstance().getBean("beanServiceImpl");
 		BeanService bs=(BeanService) SpringContextUtil.getBean("beanServiceImpl");
 //		BeanModel bm = bs.getBeanModel("lixiang_detail");
@@ -131,6 +131,7 @@ public class MainTest {
 			}
 		}
 	
+		System.out.println("main方法结束。。。。。");
 	}
 	
 	
